@@ -9,6 +9,7 @@ The **Sentiment Analysis Tool** is a web application that allows users to input 
 - **Real-Time Sentiment Analysis:** Input text and receive instant feedback on the sentiment.
 - **Simple Web Interface:** Easy-to-use interface for text input and sentiment results.
 - **Flask and TextBlob Integration:** Utilizes Flask for the web framework and TextBlob for sentiment analysis.
+- Bulma CSS for Styling: Leverages Bulma, a modern CSS framework, to create a clean and responsive user interface.
 
 ## Project Structure
 
@@ -55,7 +56,7 @@ No additional configuration is necessary for this project. All required librarie
 
 1. **Start the Flask Application**:
     ```bash
-    python app.py
+    python3 app.py
     ```
 
 2. **Access the Application**:
@@ -87,23 +88,8 @@ No additional configuration is necessary for this project. All required librarie
 
   ```python
     from flask import Flask, render_template, request
-    from textblob import TextBlob
 
     app = Flask(__name__)
-    # The Line Below Was Used To Download the nltk Data, required to run this only once
-    # Uncomment the line below and run: 'python3 sentiment.py' after the download ctrl-c then comment the line below 
-    # nltk.download('punkt')
-
-    def analyze_sentiment(text):
-        blob = TextBlob(text)
-        sentiment = blob.sentiment.polarity
-        fs = format(sentiment, ".2f")
-        if sentiment > 0:
-            return f"Positive, Rating {fs}"
-        elif sentiment < 0:
-            return f"Negative, Rating {fs}"
-        else:
-            return f"Nuetral, Rating {fs}"
 
     @app.route('/')
     def home():
@@ -118,6 +104,38 @@ No additional configuration is necessary for this project. All required librarie
     if __name__ == "__main__":
         app.run(debug=True)
   ```
+  ```python
+    import nltk
+    from textblob import TextBlob
+
+    # The Line Below Was Used To Download the nltk Data, required to run this only once
+    # Uncomment the line below and run: 'python3 sentiment.py' after the download ctrl-c then comment the line below 
+    # nltk.download('punkt')
+
+    def analyze_sentiment(text):
+        blob = TextBlob(text)
+        sentiment = blob.sentiment.polarity
+        fs = format(sentiment, ".2f")
+        if sentiment > 0:
+            return f"Positive, Rating {fs}"
+        elif sentiment < 0:
+            return f"Negative, Rating {fs}"
+        else:
+            return f"Nuetral, Rating {fs}"
+        
+    def main():
+        print("Welcome! to This is Sentiment Analysis Tool By Marwan Abdulmanna")
+        while true:
+            text = input("Enter Text to Analyze Sentiment: (or 'quit to exit)")
+            if text.lower() == 'quit':
+                break
+            sentiment = analyze_sentiment(text)
+            print(sentiment)
+
+    if __name__ == "__main__":
+        main()
+  ```
+
 ### index.html
   ```html
     <!DOCTYPE html>
