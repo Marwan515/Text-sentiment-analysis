@@ -104,7 +104,7 @@ No additional configuration is necessary for this project. All required librarie
     if __name__ == "__main__":
         app.run(debug=True)
   ```
-### sentiment.py
+### `sentiment.py`
   ```python
     import nltk
     from textblob import TextBlob
@@ -137,7 +137,7 @@ No additional configuration is necessary for this project. All required librarie
         main()
   ```
 
-### index.html
+### `index.html`
   ```html
     <!DOCTYPE html>
     <html lang="en" data-theme="dark">
@@ -202,7 +202,7 @@ No additional configuration is necessary for this project. All required librarie
     </html>
   ```
 
-### requirement.txt
+### `requirement.txt`
 - Flask==3.0.3
 - textblob==0.18.0.post0
 - nltk==3.8.1
