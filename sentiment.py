@@ -9,12 +9,13 @@ app = Flask(__name__)
 def analyze_sentiment(text):
     blob = TextBlob(text)
     sentiment = blob.sentiment.polarity
+    fs = format(sentiment, ".2f")
     if sentiment > 0:
-        return f"Positive, Rating {sentiment}"
+        return f"Positive, Rating {fs}"
     elif sentiment < 0:
-        return f"Negative, Rating {sentiment}"
+        return f"Negative, Rating {fs}"
     else:
-        return f"Nuetral, Rating {sentiment}"
+        return f"Nuetral, Rating {fs}"
 
 @app.route('/')
 def home():
